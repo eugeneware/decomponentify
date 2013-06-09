@@ -1,0 +1,26 @@
+{
+  "name": "decomponentify",
+  "version": "0.0.0",
+  "description": "Use component.js build files with browserify.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nharbour/decomponentify"
+  },
+  "keywords": [
+    "component",
+    "componentify",
+    "browserify",
+    "transform",
+    "component.js"
+  ],
+  "author": "Eugene Ware <eugene@noblesamurai.com>",
+  "license": "BSD",
+  "dependencies": {
+    "through": "~2.3.4",
+    "falafel": "~0.2.1"
+  }
+}
