@@ -31,15 +31,20 @@ module.exports = function (file) {
 
   function parse () {
     var output = data;
-    if (/^require\.modules \=/m.test(data) &&
-        /^require\.aliases \=/m.test(data) &&
-        /^require\.resolve \=/m.test(data)) {
-      output = falafel(data, function (node) {
+    if (/^require\.modules \=/m.test(output) &&
+        /^require\.aliases \=/m.test(output) &&
+        /^require\.resolve \=/m.test(output)) {
+      output = falafel(output, function (node) {
         if (node.type === 'Identifier' && node.name === 'require') {
           node.update('_require');
         }
-      });
-      output += 'module.exports = _require;';
+      }).toString();
+      output = falafel(output, function (node) {
+        if (node.type === 'Identifier' && node.name === '_require' && node.parent.type === 'FunctionDeclaration') {
+          node.parent.update(node.parent.source() + ';__require = _require;');
+        }
+      }).toString();
+      output = 'var __require = null;' + output + 'module.exports = __require;';
     }
     return output;
   }
