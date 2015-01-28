@@ -35,11 +35,16 @@ module.exports = function (file) {
         /^require\.helper \=/m.test(data) &&
         /^require\.latest \=/m.test(data)) {
       output = falafel(data, function (node) {
+        if (node.type === 'Literal' && node.value === 'exports, module') {
+          node.update('"exports, module, require"');
+        }
         if (node.type === 'Identifier' && node.name === 'require') {
           node.update('_require');
         }
       });
       output += 'module.exports = _require;';
+      output = output.replace('module.definition.call(this, module.exports = {}, module);',
+          'module.definition.call(this, module.exports = {}, module, _require);')
     }
     return output;
   }
