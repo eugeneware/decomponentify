@@ -1,6 +1,6 @@
 {
   "name": "decomponentify",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Use component.js build files with browserify.",
   "main": "index.js",
   "scripts": {
