@@ -20,7 +20,7 @@
   "author": "Eugene Ware <eugene@noblesamurai.com>",
   "license": "BSD",
   "dependencies": {
-    "through": "~2.3.4",
-    "falafel": "~0.2.1"
+    "through": "~2.3.6",
+    "falafel": "~0.3.1"
   }
 }
